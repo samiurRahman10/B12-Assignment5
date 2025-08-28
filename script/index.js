@@ -69,7 +69,8 @@ document.getElementById('call-btn-national-emergency').addEventListener('click',
         historyFunction(historyArray);
     }
     else {
-        alert("Insufficient Coin.You can't make a call")
+        alert("Insufficient Coin.You can't make a call");
+        return;
     }
 })
 // Call Button Functionalities for Police Helpline Number
