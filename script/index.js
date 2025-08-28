@@ -1,4 +1,4 @@
-const historyArray = [];
+let historyArray = [];
 // Function For Get Number
 function getTextNumber(id) {
     return parseInt(document.getElementById(id).innerText);
@@ -36,9 +36,24 @@ for (const heart of allHeartClass) {
         setNumber(loveValue, 'love-text');
     })
 }
+// Setting for Copy-btn Count and Copy text
+const allFreeBtnClass = document.querySelectorAll('.free-btn');
+for (const freeBtn of allFreeBtnClass) {
+    freeBtn.addEventListener('click', function () {
+        // For Increasing Number
+        const freeBtnValue = getTextNumber('free-btn-text') + 1;
+        setNumber(freeBtnValue, 'free-btn-text');
+        // For Number Copy
+        const text = freeBtn.closest(".card").querySelector(".copy-text").textContent;
+        navigator.clipboard.writeText(text);
+        alert("Copied: " + text);
+    })
+
+}
 // History clear Button 
 document.getElementById('history-clear-btn').addEventListener('click', function () {
-    document.getElementById('history-container').innerText='';
+    document.getElementById('history-container').innerHTML = '';
+    historyArray = [];
 })
 // Call Button Functionalities for National Emergency Service
 document.getElementById('call-btn-national-emergency').addEventListener('click', function () {
@@ -77,7 +92,7 @@ document.getElementById('call-btn-police').addEventListener('click', function ()
 // Call Button Functionalities for Police Helpline Number
 document.getElementById('call-btn-fire').addEventListener('click', function () {
     if (getTextNumber('coin-text') > 0) {
-        alert('📞 Fire Service Number 999');
+        alert('📞 Calling Fire Service Number 999');
         setCoinNumber();
         const history = {
             name: 'Fire Service Number',
@@ -94,7 +109,7 @@ document.getElementById('call-btn-fire').addEventListener('click', function () {
 // Call Button Functionalities for Ambulance Service
 document.getElementById('call-btn-ambulance').addEventListener('click', function () {
     if (getTextNumber('coin-text') > 0) {
-        alert('📞 Ambulance Service 1994-999999');
+        alert('📞 Calling Ambulance Service 1994-999999');
         setCoinNumber();
         const history = {
             name: 'Ambulance Service',
@@ -111,7 +126,7 @@ document.getElementById('call-btn-ambulance').addEventListener('click', function
 // Call Button Functionalities for Brac Service
 document.getElementById('call-btn-brac').addEventListener('click', function () {
     if (getTextNumber('coin-text') > 0) {
-        alert('📞 Brac Helpline 16445');
+        alert('📞 Calling Brac Helpline 16445');
         setCoinNumber();
         const history = {
             name: 'Brac Service',
@@ -128,7 +143,7 @@ document.getElementById('call-btn-brac').addEventListener('click', function () {
 // Call Button Functionalities for Railway Service
 document.getElementById('call-btn-railway').addEventListener('click', function () {
     if (getTextNumber('coin-text') > 0) {
-        alert('📞 Bangladesh Railway Helpline 163');
+        alert('📞 Calling Bangladesh Railway Helpline 163');
         setCoinNumber();
         const history = {
             name: 'Bangladesh Railway Helpline',
